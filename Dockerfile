@@ -38,6 +38,6 @@ RUN rm -R $GOROOT
 RUN apt-get purge -y git wget make && apt-get autoremove -y
 
 # Expose the Dex port
-EXPOSE 5555
+EXPOSE 5556
 
 CMD ["dex", "serve", "/mnt/config.yaml"]
