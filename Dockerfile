@@ -9,7 +9,10 @@ RUN apt-get update && \
 
 # Set the desired GO version and Dex branch/commit hash
 ENV GO_VERSION 1.7.3
-ENV DEX_BRANCH 6202e4d
+ENV DEX_GIT_URL https://github.com/jasonrig/dex.git
+ENV DEX_BRANCH 9286bed
+# ENV DEX_GIT_URL https://github.com/coreos/dex.git
+# ENV DEX_BRANCH 6202e4d
 
 # Fetch GO
 WORKDIR /opt
@@ -21,7 +24,7 @@ ENV GOROOT /opt/go
 
 # Download Dex source
 ENV GOPATH /opt/dex
-RUN git clone https://github.com/coreos/dex.git $GOPATH/src/github.com/coreos/dex
+RUN git clone $DEX_GIT_URL $GOPATH/src/github.com/coreos/dex
 WORKDIR $GOPATH/src/github.com/coreos/dex
 RUN git checkout $DEX_BRANCH
 
